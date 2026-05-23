@@ -1,3 +1,16 @@
-print("我的开发环境完美啦！")
-print("代码在H盘，Conda在H盘，Git已配置，tmux可后台运行~")
-print("进行了修改")
+import pandas as pd
+
+# 用 pandas 输出九九乘法表
+data = {}
+for i in range(1, 10):
+    col = []
+    for j in range(1, 10):
+        if j <= i:
+            col.append(f"{j}x{i}={i*j}")
+        else:
+            col.append("")
+    data[f"{i}"] = col
+
+df = pd.DataFrame(data, index=[f"{j}" for j in range(1, 10)])
+df.index.name = "乘数"
+print(df.to_string())
